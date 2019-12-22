@@ -1,8 +1,9 @@
 language: java
-
 jdk: oraclejdk8
-  
+
 build:
-ci:
-- mvn install -DskipTests=true
-   
+   ci:
+      -mkdir shippable/testresults
+      -mkdir shippable/codecoverage
+      -shippable_retry mvn install
+      -cp -r target shippable/codecoverage
